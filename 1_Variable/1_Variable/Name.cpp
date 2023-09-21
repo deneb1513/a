@@ -130,16 +130,23 @@ int main()
 
 	//문제 아래 time 들어있는 초 값에 분과 시간을 구하여라
 
-	unsigned int sec = 987654321; //초
+	unsigned int total_sec = 987654321; //초
 
-	unsigned int day = 0, hour = 0, min = 0;
-	/*day = 0;
-	hour = 0;
-	min = 0;
-	sec = 0;*/
+	unsigned int day = 0, hour = 0, min = 0, sec=0;
+	/*day = 11431;
+	* 나머지 =15921
+	hour =4;
+	나머지 = 1521
+	min = 25;
+	sec = 21;*/
 	
-	printf("%d", 1 + 1);
-
+	 day = total_sec/86400;
+	 hour = (total_sec % 86400)/3600;
+	 min = ((total_sec % 86400)%3600)/60;
+	 sec = ((total_sec % 86400) % 3600) % 60;
+   
+	
+	 printf("%d, %d, %d, %d", day, hour, min, sec);
 	system("pause");
 
 }
