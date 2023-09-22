@@ -144,7 +144,13 @@ int main()
 	 hour = (total_sec % 86400)/3600;
 	 min = ((total_sec % 86400)%3600)/60;
 	 sec = ((total_sec % 86400) % 3600) % 60;
-   
+
+
+	 //∞≠ªÁ¥‘ «Æ¿Ã
+	 //sec = total%60;
+	 //min = (total/60)%60;
+	 //hour = ((total/60)/60)%24; 
+     //day = ((total/60)/60)/24;
 	
 	 printf("%d, %d, %d, %d", day, hour, min, sec);
 	system("pause");
