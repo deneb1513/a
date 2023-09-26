@@ -81,7 +81,7 @@ int main()
         {
             printf("숫자 2개를 입력하시오(num1 num2):");
             scanf_s("%d %d", &num1, &num2);
-            printf("두 수의 나눗셈은 %d입니다.\n", RemainNum(num1, num2));
+            printf("두 수의 나머지는 %d입니다.\n", RemainNum(num1, num2));
         }
         break;
 
