@@ -49,28 +49,29 @@ void BuyPhone(ePhoneType phoneType,stPhoneShop* pPs)
 		break;
 	}
 }
+//number를 받아서 화면에 출력한다.
+void printNumber(const int* number)
+{   // number = nullptr;// 포인터 주소 값을 변경할 수 있다.
+	// *number =2;
+	printf("pinrt number=%d\n", *number);
+}
 
-//void SelectionSort(int*ap_buf)
-//{
-//	int min, index, temp;
-//
-//	for (int i = 0; i < 10; i++)
-//	{
-//		min = ap_buf[i];
-//		
-//		for (int j = i + 1; j < 10; j++)
-//		{
-//			if (ap_buf[j] < min)
-//			{
-//				min = ap_buf[j];
-//				index = j;
-//			}
-//		}
-//		temp = ap_buf[i];
-//		ap_buf[i] = min;
-//		ap_buf[index] = temp;
-//	}
-//}
+void printNumber2(const int& number)
+{
+	// number = nullptr;
+	// *number =4;
+	printf("pinrt number=%d\n", number);
+} //위의 printNumber대신 많이 쓰임. 보통 레퍼런스 참조라고 함.
+
+void printPhoneShop(const stPhoneShop* ps)
+{
+	printf("pinrt iPhoneCnt=%d\n", ps -> iPhoneCnt);
+}
+
+void printPhoneShop(const stPhoneShop& ps)
+{
+	printf("pinrt iPhoneCnt=%d\n", ps.iPhoneCnt);
+}
 
 int main()
 {
@@ -176,6 +177,30 @@ int main()
 		printf("%d", arr[i]);
 	}
 	printf("\n");
+
+	// const 상수화
+	// 실수를 줄일수 있어서 디버깅 횟수를 줄일수 있다. 디버깅: 버그를 찾거나 수정하는 모든 행위
+	const int cint = 100;//상수
+
+	int value = 0;
+	int value2 = 0;
+	int* pValue = &value;
+	// const int* pValue = &value; // 포인터가 가르키는 내용 수정 불가능, 포인터 값 수정가능, 참조 가능
+	// int const* pValue = &value; // 포인터가 가르키는 내용 수정 불가능, 포인터 값 수정가능, 참조 가능
+	// int *const pValue = &value; // 포인터가 가르키는 내용 수정 가능, 포인터 값 수정 불가능, 참조 가능
+	// const int *const pValue = &value; // 포인터가 가르키는 내용 수정 불가능, 포인터 값 수정 불가능, 참조 가능
+	// int const *const pValue = &value; // 포인터가 가르키는 내용 수정 불가능, 포인터 값 수정 불가능, 참조 가능
+
+	*pValue = 2;
+	pValue = &value2;
+	printf("pValue=%d\n", *pValue);
+	
+	printNumber(&value);
+
+	printNumber2(value);
+
+
+
 
 	return 0; 
 
