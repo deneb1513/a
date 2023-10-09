@@ -25,7 +25,7 @@ int main()
 
 	//2의 배수 출력하기(0~100)
 
-	int num = 100;
+	//int num = 100;
 	/*for (int a = 0; a <= num; a+=2)
 	{
 		printf("%d\n", a);
@@ -44,28 +44,44 @@ int main()
 		printf("%d\n", c*a);
 	}*/
 
-	//(0~100) 2의 배수에 갯수 출력
-	int sum2 = 0;// int형 sum2변수라고 생성하고 초기값을 0으로 설정한다.
+	//(0~100) 2의 배수에 개수 출력
+	//int sum2 = 0;// int형 sum2변수라고 생성하고 초기값을 0으로 설정한다.
 	//sum2 = 1;// sum2에 1을 대입한다.
 	//sum2 = sum2+1;// sum2에 1을 더한값을 대입한다.
 
-	for (int i = 1; i <= 100; i++)
+	/*for (int i = 1; i <= 100; i++)
 	{
 		if (i % 2 == 0)
 		{
 			sum2 += 1;
 		}
 	}
-	printf("2의 배수의 합은 %d입니다.\n", sum2);
+	printf("2의 배수의 개수의 합은 %d입니다.\n", sum2);*/
 
 	//abcdef를 역으로 출력하기 ->fedcba
-	wchar_t szWChar[20] = L"abcdef";
+	//wchar_t szWChar[20] = L"abcdef";
 
-	int a = wcslen(szWChar);
-	for (int b = 0; b < a; b++)
-	{
-		wprintf(L"역순 출력%c\n", szWChar[a-1-b]);
-	}
+	//int a = wcslen(szWChar);
+	//for (int b = 0; b < a; b++)
+	//{
+	//	wprintf(L"역순 출력%c\n", szWChar[a-1-b]);
+	//}
+	//강사님 풀이
+	//int size = wcslen(szWChar);
+	///*printf("size=%d\n", size);
+	//printf("%c", szWChar[size - 1]);
+	//printf("%c", szWChar[size - 2]);
+	//printf("%c", szWChar[size - 3]);
+	//printf("%c", szWChar[size - 4]);
+	//printf("%c", szWChar[size - 5]);
+	//printf("%c", szWChar[size - 6]);*/
+ //   //위를 for문으로 작성
+	//for (int i = 1; i <= size; ++i)
+	//{
+	//	printf("%c", szWChar[size - i]);
+	//}
+
+
 
 
 	//wchar_t형으로 문자 입력 받기
@@ -85,5 +101,34 @@ int main()
 
 
 	//입력 받은 문자열에서 'a'문자 갯수 출력
+	/*int size = wcslen(szWCharInput);
+	int cnt = 0;
+	for (int i = 0; i < size; ++i)
+	{
+		if (szWCharInput[i]=='a')
+		{
+			cnt++;
+		}
+	}
+	printf("cnt=%d\n", cnt);*/
+
+	int size = wcslen(szWCharInput);
+	int cnt = 0;
+	for (int i = 0; i < size; ++i)
+	{
+		if (szWCharInput[i] == 'a')
+		{
+			cnt++;
+		}
+	}
+	printf("cnt=%d\n", cnt);
+
+
+
+
+
+
+
+
 }
 
