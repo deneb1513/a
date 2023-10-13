@@ -14,7 +14,7 @@
 
 UCLASS()// 언리얼 클래스 선언
 //UE5CODE_API: 이 클래스는 UE5CODE_API 모듈에 포함된다.
-class UE5CODE_API AMove_leftRight : public AActor// public AActor : AActor의 기능을 상송 받겠다.
+class UE5CODE_API AMove_leftRight : public AActor// public AActor : AActor의 기능을 상속 받겠다.
 {
 	GENERATED_BODY()//언리얼 코드 생성 함수-언리얼 클래스 생성 기본 규칙
 	
@@ -32,12 +32,13 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	//UPROPERTY(EditeAnywhere, BlueprintReadWrite)
-	USceneComponent* Scene;
+	USceneComponent* Scene;//컴포넌트탭에서 루트컴포넌트 부분
 
 
 	UPROPERTY(visibleAnywhere, BlueprintReadWrite)//항상 내가 만든 변수위에 작성. 
-	UStaticMeshComponent* StaticMesh;
+	UStaticMeshComponent* StaticMesh;//컴포넌트탭에서 스태틱메시부분
 
 	float LocX;
 	bool IsMoveRight;
+	bool Isplay;
 };

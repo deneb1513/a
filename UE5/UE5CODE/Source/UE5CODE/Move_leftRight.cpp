@@ -4,7 +4,7 @@
 #include "Move_leftRight.h"
 
 // Sets default values
-AMove_leftRight::AMove_leftRight() :LocX(0), IsMoveRight(true)
+AMove_leftRight::AMove_leftRight() :LocX(0), IsMoveRight(true), Isplay(false)
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -47,7 +47,8 @@ AMove_leftRight::~AMove_leftRight()
 void AMove_leftRight::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	if (Isplay == false)
+		return;
 }
 
 // Called every frame
