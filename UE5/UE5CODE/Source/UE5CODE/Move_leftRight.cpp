@@ -55,7 +55,8 @@ void AMove_leftRight::BeginPlay()
 void AMove_leftRight::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);//오버라이드 한 함수인 경우 부모 함수를 실행한다.
-	IsMoveRight; //움직일 방향
+	if (Isplay == false)
+		return;
 
 	//LocX += 1;// 오른쪽 이동
 
