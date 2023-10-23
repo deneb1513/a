@@ -2,9 +2,10 @@
 
 
 #include "Move_leftRight.h"
+#include"Switch.h"
 
 // Sets default values
-AMove_leftRight::AMove_leftRight() :LocX(0), IsMoveRight(true), Isplay(false)
+AMove_leftRight::AMove_leftRight() :m_LocX(0), m_IsMoveRight(true), m_Isplay(false)
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -47,15 +48,16 @@ AMove_leftRight::~AMove_leftRight()
 void AMove_leftRight::BeginPlay()
 {
 	Super::BeginPlay();
-	if (Isplay == false)
-		return;
+	
+	if (IsValid(m_Switch))
+		m_Switch->FDele_EventOverlap.AddDynamic(this, &AMove_leftRight::EventOverlap);
 }
 
 // Called every frame
 void AMove_leftRight::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);//오버라이드 한 함수인 경우 부모 함수를 실행한다.
-	if (Isplay == false)
+	if (m_Isplay == false)
 		return;
 
 	//LocX += 1;// 오른쪽 이동
@@ -63,22 +65,34 @@ void AMove_leftRight::Tick(float DeltaTime)
 	//LocX -= 1;//왼쪽으로 이동
 	//SetRelativeLocation : 상대적인 위치값을 설정한다.
 	//FVector : 언리얼에서 사용하는 3차원 좌표 변수
-	StaticMesh->SetRelativeLocation(FVector(LocX, 0, 0));
-	if (IsMoveRight == true)
+	StaticMesh->SetRelativeLocation(FVector(m_LocX, 0, 0));
+	if (m_IsMoveRight == true)
 	{
-		LocX += 1;
-		if (LocX >= 20)//float형은 크기비교를 하는게 좋다. ==을 쓰면 에러가 발생할 수도 있음
+		m_LocX += 1;
+		if (m_LocX >= 20)//float형은 크기비교를 하는게 좋다. ==을 쓰면 에러가 발생할 수도 있음
 		{
-			IsMoveRight = false;
+			m_IsMoveRight = false;
 		}
 	}
-	else if (IsMoveRight == false)
+	else if (m_IsMoveRight == false)
 	{
-		LocX -= 1;
-		if (LocX <= -20)
+		m_LocX -= 1;
+		if (m_LocX <= -20)
 		{
-			IsMoveRight = true;
+			m_IsMoveRight = true;
 		}
 	}
 }
+
+void AMove_leftRight::EventOverlap(bool isBegin)
+{
+	m_Isplay = isBegin;
+}
+
+void AMove_leftRight::Code_DoPlay_Implementation(bool IsPlay)
+{
+	m_Isplay = IsPlay;
+}
+
+
 

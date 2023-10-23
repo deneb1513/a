@@ -124,6 +124,13 @@ void AUE5CODECharacter::Look(const FInputActionValue& Value)
 	}
 }
 
+void AUE5CODECharacter::Jump()/////
+{
+	if (bDisableJump == true)
+		return;
+
+	Super::Jump();
+}
 
 
 
