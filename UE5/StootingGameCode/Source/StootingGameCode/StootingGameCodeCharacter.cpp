@@ -66,23 +66,38 @@ void AStootingGameCodeCharacter::BeginPlay()
 	}
 }
 
-void AStootingGameCodeCharacter::ReqTestMsg_implementation()
+void AStootingGameCodeCharacter::ReqTestMsg2_Implementation()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 60.0f, FColor::Green, TEXT("ReqTestMsg2"));
+	ResTestMsg2();
+}
+
+void AStootingGameCodeCharacter::ResTestMsg2_Implementation()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 60.0f, FColor::Green, TEXT("ResTestMsg2"));
+	if (IsValid(ReloadMontage) == false)
+		return;
+	PlayAnimMontage(ReloadMontage);
+}
+
+void AStootingGameCodeCharacter::ReqTestMsg_Implementation()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 60.0f, FColor::Green, TEXT("ReqTestMsg"));
 	ResTestMsg();
 }
 
-void AStootingGameCodeCharacter::ResTestMsg_implementation()
+void AStootingGameCodeCharacter::ResTestMsg_Implementation()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 60.0f, FColor::Green, TEXT("ResTestMsg"));
+	if (IsValid(ShootMontage) == false)
+		return;
+	PlayAnimMontage(ShootMontage);
 }
 
-void AStootingGameCodeCharacter::ResTestMsgToOwner_implementation()
+void AStootingGameCodeCharacter::ResTestMsgToOwner_Implementation()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 60.0f, FColor::Green, TEXT("ResTestMsgToOwner"));
 }
-
-
 
 //////////////////////////////////////////////////////////////////////////
 // Input
@@ -109,6 +124,9 @@ void AStootingGameCodeCharacter::SetupPlayerInputComponent(class UInputComponent
 
 		//Test
 		EnhancedInputComponent->BindAction(TestAction, ETriggerEvent::Started, this, &AStootingGameCodeCharacter::Test);
+
+		//Test2
+		EnhancedInputComponent->BindAction(Test2Action, ETriggerEvent::Started, this, &AStootingGameCodeCharacter::Test2);
 
 	}
 
@@ -150,10 +168,17 @@ void AStootingGameCodeCharacter::Look(const FInputActionValue& Value)
 	}
 }
 
+
 void AStootingGameCodeCharacter::Test(const FInputActionValue& Value)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 60.0f, FColor::Green, TEXT("Test"));
-	
+	ReqTestMsg();
+}
+
+void AStootingGameCodeCharacter::Test2(const FInputActionValue& Value)
+{
+	GEngine->AddOnScreenDebugMessage(-1, 60.0f, FColor::Green, TEXT("Test2"));
+	ReqTestMsg2();
 }
 
 

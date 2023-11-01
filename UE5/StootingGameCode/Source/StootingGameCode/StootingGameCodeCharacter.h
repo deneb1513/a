@@ -41,6 +41,10 @@ class AStootingGameCodeCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* TestAction;
 
+	/** Test2 Input Action */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	class UInputAction* Test2Action;
+
 public:
 	AStootingGameCodeCharacter();
 	
@@ -55,6 +59,9 @@ protected:
 
 	/** Called for Test input */
 	void Test(const FInputActionValue& Value);
+
+	/** Called for Test2 input */
+	void Test2(const FInputActionValue& Value);
 			
 
 protected:
@@ -83,5 +90,20 @@ public:
 	//Client: 서버가 소유중인 클라이언트에서 실행
 	UFUNCTION(Client, Reliable)
 	void ResTestMsgToOwner();
+
+
+	UFUNCTION(Server, Reliable)
+	void ReqTestMsg2();
+
+	//NetMulticast: 모두에서 실행(클라이언트와 서버)
+	UFUNCTION(NetMulticast, Reliable)
+	void ResTestMsg2();
+
+public:
+	UPROPERTY(EditAnywhere, BluePrintReadWrite)
+	UAnimMontage* ShootMontage;
+
+	UPROPERTY(EditAnywhere, BluePrintReadWrite)
+	UAnimMontage* ReloadMontage;
 };
 
